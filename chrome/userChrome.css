@@ -1,0 +1,234 @@
+/* Hides Tabs Toolbar automatically if Sidebery is active */
+@import url(components/windows_controls_placeholder.css);
+@import url(components/hide_tabs_toolbar.css);
+
+/* Autohide sidebar */
+@import url(components/autohide_sidebar.css);
+
+/* Rounded corner highlight in context menu */
+@import url(components/enhanced_context_menu.css);
+
+/* Remove unneeded context menu entries */
+#tabContextMenu #context_sendTabToDevice,
+.share-tab-url-item,
+#context-sendimage,
+#context-sendvideo,
+#context-sendlinktodevice,
+#context-sep-setbackground,
+#context-setDesktopBackground {
+    display: none
+}
+
+/* Remove sidebar header */
+#sidebar-header {
+    display: none
+}
+
+/* Theme navigation bar and findbar separators to be consistent */
+#navigator-toolbox {
+    border-bottom-color: var(--toolbar-field-background-color) !important;
+}
+
+findbar {
+    border-top-color: var(--toolbar-field-background-color) !important;
+}
+
+}
+
+/* MOVE OVERFLOW AND HAMBURGER MENU TO THE LEFT */
+@media not all {
+	/* #nav-bar {
+		flex-direction: row-reverse;
+	} */
+	#nav-bar-customization-target {
+		-moz-box-ordinal-group: 100;
+	}
+	#nav-bar-overflow-button {
+		-moz-box-ordinal-group: 99;
+	}
+	/* moving overflow button to the left breaks the Customize screen, rules below fix it */
+	#customization-panelWrapper {
+		--panel-arrow-offset: 46px !important; 
+	}
+	/* #customization-panelWrapper > .panel-arrowbox {
+		display: none;
+	} */
+}
+
+#back-button,
+#forward-button {
+	padding: 0 !important;
+}
+#back-button > .toolbarbutton-icon {
+	list-style-image: url("img/back.svg") !important;
+}
+#forward-button > .toolbarbutton-icon {
+	list-style-image: url("img/forward.svg") !important;
+}
+#reload-button > .toolbarbutton-icon {
+	list-style-image: url("img/reload.svg") !important;
+}
+#history-panelmenu {
+	list-style-image: url("img/history.svg") !important;
+}
+#downloads-indicator-icon {
+	list-style-image: url("img/downloads.svg") !important;
+}
+#bookmarks-menu-button > .toolbarbutton-icon {
+	list-style-image: url("img/bookmarks.svg") !important;
+}
+#nav-bar-overflow-button > .toolbarbutton-icon {
+	list-style-image: url("img/overflow.svg") !important;
+}
+#PanelUI-menu-button {
+	list-style-image: url("img/menu.svg") !important;
+}
+
+#urlbar,
+#searchbar {
+	--urlbar-height: var(--urlbar-height, 30px); /* The browser should take care of this, but just incase, this is the default */
+	--urlbar-toolbar-height: var(--urlbar-container-height) !important;
+}
+
+.searchbar-search-button {
+	margin-inline-end: var(--identity-box-margin-inline);
+}
+
+.searchbar-search-icon {
+	margin: 0 !important;
+}
+
+panel-arrowbox[part=arrowbox] {
+	z-index: 999;
+}
+
+scrollbox {
+	scroll-behavior: smooth;
+	overflow-y: auto;
+}
+
+scrollbar {
+	scrollbar-color: hsla(0, 0%, 33%, 0.5) hsla(0, 0%, 0%, 0) !important;
+	scrollbar-width: thin !important;
+	background-color: hsla(0, 0%, 0%, 0.1);
+	backdrop-filter: var(--acrylic-backdrop-filter) !important;
+}
+
+@media not all {
+	#urlbar-background,
+	#searchbar {
+		background-color: color-mix(in srgb, var(--toolbar-field-background-color) 85%, gray 0%) !important;
+	}
+	#urlbar:is([focused="true"], [open]) > #urlbar-background,
+	#searchbar:focus-within {
+		background-color: color-mix(in srgb, var(--toolbar-field-focus-background-color) 85%, gray 0%) !important;
+	}
+}
+
+#urlbar,
+#searchbar {
+	--urlbar-height: var(--urlbar-height, 30px); /* The browser should take care of this, but just incase, this is the default */
+	--urlbar-toolbar-height: var(--urlbar-container-height) !important;
+}
+
+#searchbar {
+	background: none !important;
+	border: none !important;
+	position: relative;
+	box-shadow: none !important;
+}
+
+#searchbar > * {
+    position: relative !important;
+}
+
+#searchbar::before {
+    content: '';
+	position: absolute !important;
+    display: block;
+    inset: 0;
+    border-radius: var(--toolbarbutton-border-radius);
+}
+
+#urlbar > #urlbar-background,
+#searchbar::before {
+	box-shadow: 0 0 0 transparent, 0 0 0 var(--shadow-color) !important;
+	--shadow-color: hsla(0, 0%, 0%, 0);
+	--toolbarbutton-border-radius: calc(var(--urlbar-height, 30px) / 2);
+	transition: border-color .15s ease, box-shadow .15s ease;
+	animation-duration: 150ms !important;
+}
+
+#urlbar[open] > #urlbar-background {
+	box-shadow: 0 3px 5px var(--shadow-color), 0 10px 9px var(--shadow-color) !important;
+	backdrop-filter: var(--acrylic-backdrop-filter) !important;
+	--shadow-color: hsla(0, 0%, 0%, .1);
+}
+
+#urlbar-input-container,
+#searchbar {
+	--padding-inline: 14px;
+	padding-inline: var(--padding-inline) !important;
+}
+
+#urlbar[breakout][breakout-extend] > #urlbar-input-container {
+	padding-inline: calc(var(--padding-inline) + 5px) !important;
+}
+
+:root {
+	--urlbar-icon-size: 14px !important;
+	--urlbar-icon-padding: 4px !important;
+	--identity-box-margin-inline: 8px !important;
+}
+
+#PanelUI-button {
+	--toolbar-start-end-padding: 7px !important;
+}
+
+titlebar {
+	overflow: 99999;
+}
+
+#titlebar {
+	grid-column: buttons;
+	display: block;
+}
+
+#nav-bar {
+	grid-column: navbar;
+	grid-row: 1;
+}
+
+
+:root, vbox, scrollbox {
+	scrollbar-color: hsla(0, 0%, 100%, 0.1) transparent !important;
+	scrollbar-width: thin !important;
+}
+
+:root {
+	--acrylic-backdrop-filter: blur(10px);
+	--acrylic-background-blend-mode: exclusion;
+	--acrylic-background-image: url("chrome://global/skin/media/imagedoc-lightnoise.png");
+}
+
+
+.panel-arrowbox[part=arrowbox] {
+	z-index: 999;
+}
+
+scrollbox {
+	scroll-behavior: smooth;
+	overflow-y: auto;
+}
+
+.scrollbutton-up[orient=vertical],
+.scrollbutton-down[orient=vertical] {
+	visibility: collapse !important;
+}
+
+scrollbar {
+	scrollbar-color: hsla(0, 0%, 33%, 0.5) hsla(0, 0%, 0%, 0) !important;
+	scrollbar-width: thin !important;
+	background-color: hsla(0, 0%, 0%, 0.1);
+	backdrop-filter: var(--acrylic-backdrop-filter) !important;
+}
