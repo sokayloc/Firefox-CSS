@@ -1,12 +1,3 @@
-/* Smooth Scroll  */
-user_pref("general.smoothScroll.msdPhysics.enabled", true);
-user_pref("general.smoothScroll.msdPhysics.motionBeginSpringConstant", 600);
-user_pref("general.smoothScroll.msdPhysics.regularSpringConstant", 750);
-user_pref("general.smoothScroll.msdPhysics.slowdownSpringConstant", 500);
-user_pref("mousewheel.acceleration.factor", 6);
-user_pref("mousewheel.acceleration.start", 6);
-user_pref("mousewheel.min_line_scroll_amount", 22);
-
 /* Enable userChrome customisations */
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
